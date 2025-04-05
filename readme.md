@@ -23,3 +23,26 @@
 3. Gerekli kütüphaneleri yükleyin:
     ```bash
    pip install -r requirements.txt
+
+## Badges
+
+### **1. Activity Tabanlı Rozetler**
+
+**Activity Tabanlı Rozetler** kullanıcının uygulama üzerindeki belli hedeflere ulaşması ile elde edebileceği rozetlerin kazanılması için kullanılan servistir.
+ 
+    ```bash
+    {"id": 2, "type": "activity_based", "activity_type" : "comment" , "count": 5}
+
+### **2. Event Tabanlı Rozetler**
+
+**Event Tabanlı Rozetler** kullanıcının uygulama üzerinde gerçekleştireceği bir etkinlik ile elde edebileceği rozetlerin kazanılması için kullanılan servistir.
+
+    ```bash
+    {"id": 0, "type": "event_based", "event": "user_created"}
+
+### 3. Özel Rozetler
+
+**Özel Rozetler** kullanıcının uygulama üzerinde hedeflerle veya etkinliği ile elde edemeyeceği rozetlerin kazanılması için kullanılan servistir. Burada oluşturulan rozetler sınırlı sayıda kullanıcılara ve kullanıcının sınırlı sayıda elde edilebileceği şekilde modifiye imkanı tanımaktadır. 
+
+    ```bash
+    {"id": 1, "type": "profile_update" , "count" : 1} -->

@@ -16,6 +16,17 @@
             </button>
         </div>
     {% endif %}
+    <div class="badges-section">
+        <h3>Kazanılan Rozetler</h3>
+        <h3>Kazanılan Rozetler ({{ request.user.badges.count }} adet)</h3>
+        {% for user_badge in request.user.badges.all %}
+            <img src="{{ user_badge.badge.icon.url }}" 
+                 alt="{{ user_badge.badge.name }}"
+                 title="{{ user_badge.badge.description }}">
+        {% empty %}
+            <p>Henüz rozet kazanılmadı.</p>
+        {% endfor %}
+    </div>
     <div class="form-content">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
