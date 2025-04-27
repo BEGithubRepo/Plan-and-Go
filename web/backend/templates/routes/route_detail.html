@@ -1,0 +1,59 @@
+<!-- templates/routes/route_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ route.title }}{% endblock %}
+
+{% block content %}
+<div class="card border-primary shadow">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">
+            <i class="fas fa-map-pin"></i> {{ route.title }}
+        </h3>
+    </div>
+    
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="map-placeholder bg-light p-3 rounded mb-4">
+                    <div class="text-center text-muted py-5">
+                        <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
+                        <p>Harita görüntüsü burada gösterilecek</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="mb-4">
+                    <h5 class="text-primary"><i class="fas fa-info-circle"></i> Detaylar</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Başlangıç:</strong> {{ route.start_point }}
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Varış:</strong> {{ route.destination }}
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <h5 class="text-primary"><i class="fas fa-map-marker-alt"></i> Duraklar</h5>
+                    {% for waypoint in route.waypoints.all %}
+                    <div class="d-flex align-items-center mb-2">
+                        <span class="badge badge-primary mr-2">{{ forloop.counter }}</span>
+                        <span>{{ waypoint.name }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="d-flex justify-content-end gap-2">
+            <a href="#" class="btn btn-outline-primary">Düzenle</a>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#shareModal">
+                Paylaş <i class="fas fa-share-square"></i>
+            </button>
+            {% include 'includes/share_modal.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

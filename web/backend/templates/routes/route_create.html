@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Yeni Rota Oluştur</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                </div>
+                <div class="mb-3">
+                    {{ form.start_point.label_tag }}
+                    {{ form.start_point }}
+                    <small class="form-text text-muted">{{ form.start_point.help_text }}</small>
+                </div>
+                <div class="mb-3">
+                    {{ form.destination.label_tag }}
+                    {{ form.destination }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    {{ form.start_date.label_tag }}
+                    {{ form.start_date }}
+                </div>
+                <div class="mb-3">
+                    {{ form.end_date.label_tag }}
+                    {{ form.end_date }}
+                </div>
+                <div class="mb-3 form-check">
+                    {{ form.is_shared }}
+                    <label class="form-check-label" for="{{ form.is_shared.id_for_label }}">
+                        {{ form.is_shared.label }}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Rota Oluştur</button>
+    </form>
+</div>
+{% endblock %}

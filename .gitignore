@@ -1,1 +1,11 @@
 web/PlanAndGoWeb/plan_go/.env
+/web/backend/media/profile_images
+/web/backend/badges/__pycache__
+/web/backend/badges/migrations
+/web/backend/plan_go/__pycache__
+/web/backend/routes/__pycache__
+/web/backend/routes/migrations/__pycache__
+/web/backend/users/__pycache__
+/web/backend/users/migrations
+/web/backend/users/signals_old/__pycache__
+/web/PlanAndGoWeb/badges/__pycache__

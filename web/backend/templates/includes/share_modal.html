@@ -1,0 +1,78 @@
+<!-- templates/includes/share_modal.html -->
+<div class="modal fade" id="shareModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title text-success">
+            <i class="fas fa-share-alt"></i> {{ route.title }} - Paylaş
+          </h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        
+        <div class="modal-body">
+          <ul class="nav nav-tabs mb-3">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#qrTab">
+                <i class="fas fa-qrcode"></i> QR Kod
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#linkTab">
+                <i class="fas fa-link"></i> Bağlantı
+              </a>
+            </li>
+          </ul>
+  
+          <div class="tab-content">
+            <!-- QR Code Tab -->
+            <div class="tab-pane fade show active" id="qrTab">
+              <div class="text-center">
+                <img src="{{ route.qr_code.url }}" 
+                     class="img-fluid mb-3" 
+                     alt="QR Code"
+                     style="max-width: 200px;">
+                <p class="text-muted small">
+                  QR kodu tarayarak rotaya erişebilirsiniz
+                </p>
+              </div>
+            </div>
+            
+            <!-- Link Tab -->
+            <div class="tab-pane fade" id="linkTab">
+              <div class="input-group">
+                <input type="text" 
+                       class="form-control" 
+                       value="{{ route.share_link }}" 
+                       readonly
+                       id="shareLinkInput">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-success" 
+                          onclick="copyToClipboard()">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {% block scripts %}
+  <script>
+  function copyToClipboard() {
+    const copyText = document.getElementById("shareLinkInput");
+    copyText.select();
+    document.execCommand("copy");
+    
+    const copyBtn = document.querySelector("#linkTab button");
+    copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+    setTimeout(() => {
+      copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
+    }, 2000);
+  }
+  </script>
+  {% endblock %}

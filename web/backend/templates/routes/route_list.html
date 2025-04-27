@@ -1,0 +1,40 @@
+<!-- templates/routes/route_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Rotalarım{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary"><i class="fas fa-map-marked-alt"></i> Rotalarım</h2>
+    <a href="{% url 'route-create' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Yeni Rota
+    </a>
+</div>
+
+<div class="list-group">
+    {% for route in routes %}
+    <div class="list-group-item list-group-item-action flex-column align-items-start mb-3 shadow-sm">
+        <div class="d-flex justify-content-between">
+            <div class="w-75">
+                <h5 class="mb-1 text-primary">{{ route.title }}</h5>
+                <small class="text-muted">
+                    {{ route.start_date|date:"d M Y" }} - {{ route.end_date|date:"d M Y" }}
+                </small>
+            </div>
+            <div class="btn-group">
+                <a href="{% url 'route-detail' route.id %}" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-eye"></i>
+                </a>
+                <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#shareModal">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-info">
+        Henüz hiç rota oluşturmadınız
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

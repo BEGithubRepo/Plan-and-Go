@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Giriş Yap{% endblock %}
+
+{% block content %}
+<div class="card border-success mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-white border-0 text-center">
+        <h3 class="text-success mb-0"><i class="fas fa-sign-in-alt"></i> Giriş Yap</h3>
+    </div>
+    <div class="card-body">
+        <form method="POST" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label class="text-success">Kullanıcı Adı</label>
+                <input type="text" name="username" class="form-control border-success" required>
+            </div>
+            <div class="form-group">
+                <label class="text-success">Şifre</label>
+                <input type="password" name="password" class="form-control border-success" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">
+                <i class="fas fa-unlock-alt"></i> Giriş Yap
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'password_reset' %}" class="text-success">Şifremi Unuttum</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

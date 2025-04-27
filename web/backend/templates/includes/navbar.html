@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container">
+        <a class="navbar-brand text-primary" href="{% url 'users-home' %}">
+            <i class="fas fa-route"></i> Plan&Go
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="{% url 'users-profile' %}">
+                        <i class="fas fa-user-circle"></i> Profilim
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'route-list' %}">
+                        <i class="fas fa-map-marked-alt"></i> Rotalarım
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'route-list' %}">
+                        <i class="fas fa-share-alt"></i> Paylaş
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="{% url 'logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> Çıkış
+                    </a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="{% url 'login' %}">
+                        <i class="fas fa-sign-in-alt"></i> Giriş
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="{% url 'users-register' %}">
+                        <i class="fas fa-sign-in-alt"></i> Kayıt Ol
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,22 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron bg-white text-center">
+    <h3 class="text-success mb-0">Hoş Geldin, {{ user.first_name|default:user.username }}! 🌟</h3>
+    <br>
+    <h1 class="display-4 text-primary">Yolculuğunu Planla!</h1>
+    <p class="lead">Kişisel rotalarını oluştur, paylaş ve keşfet</p>
+    <hr class="my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a href="{% url 'route-create' %}" class="btn btn-primary btn-lg btn-block">
+                <i class="fas fa-plus-circle"></i> Yeni Rota Oluştur
+            </a>
+            <a href="{% url 'route-list' %}" class="btn btn-outline-primary btn-lg btn-block mt-3">
+                <i class="fas fa-map"></i> Rotalarımı Görüntüle
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

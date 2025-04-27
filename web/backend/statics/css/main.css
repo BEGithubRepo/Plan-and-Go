@@ -1,0 +1,67 @@
+:root {
+    --primary: #2ecc71;
+    --secondary: #27ae60;
+    --light: #d5f5e3;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+
+.btn-success {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+    background-color: var(--secondary-green);
+    border-color: var(--secondary-green);
+}
+
+.border-success {
+    border-color: var(--primary-green) !important;
+}
+
+.badge-primary {
+    background-color: var(--primary);
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.map-placeholder {
+    border: 2px dashed var(--primary);
+    border-radius: 8px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--light),
+        var(--light) 10px,
+        #fff 10px,
+        #fff 20px
+    );
+}
+
+.text-success {
+    color: var(--primary-green) !important;
+}
+
+.form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.2rem rgba(46, 204, 113, 0.25);
+}
+
+.card {
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
