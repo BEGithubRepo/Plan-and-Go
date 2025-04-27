@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { useRouter } from 'expo-router';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from '@/contexts/AuthContext';
 import Colors from '@/constants/Colors';
 import Input from '@/components/Input';
@@ -22,6 +23,17 @@ export default function LoginScreen() {
   const handleLogin = async (values: { username: string; password: string }) => {
     try {
       setError(null);
+      
+      // Check for test credentials
+      if (values.username === 'deneme' && values.password === 'deneme') {
+        // Simulate successful login
+        await AsyncStorage.setItem('accessToken', 'test-token');
+        await AsyncStorage.setItem('user', JSON.stringify({ username: 'deneme' }));
+        router.replace('/(tabs)');
+        return;
+      }
+      
+      // If not test credentials, proceed with actual login
       await login(values.username, values.password);
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');
@@ -160,7 +172,7 @@ const styles = StyleSheet.create({
   },
   errorContainer: {
     backgroundColor: Colors.error[500] + '20',
-    borderRadius:, 
+    borderRadius: 10,
     padding: 12,
     marginBottom: 16,
     borderLeftWidth: 4,

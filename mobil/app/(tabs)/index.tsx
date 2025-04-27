@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, RefreshControl } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Calendar, Map, MapPin } from 'lucide-react-native';
+import { Calendar, Map, MapPin, Award } from 'lucide-react-native';
 import { useAuth } from '@/contexts/AuthContext';
 import { routeApi, badgeApi } from '@/utils/ApiService';
 import Colors from '@/constants/Colors';
