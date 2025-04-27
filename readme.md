@@ -43,3 +43,17 @@
 **Özel Rozetler** kullanıcının uygulama üzerinde hedeflerle veya etkinliği ile elde edemeyeceği rozetlerin kazanılması için kullanılan servistir. Burada oluşturulan rozetler sınırlı sayıda kullanıcılara ve kullanıcının sınırlı sayıda elde edilebileceği şekilde modifiye imkanı tanımaktadır. 
 
     {"id": 1, "type": "profile_update" , "count" : 1}
+
+## Projenin Başlatılması
+
+### **Backend ve Web Sunucusu**
+
+Web klasörü içerisinde yer alan **req.txt** dosyasında yazan kütüphanelerin yer aldığı bir virtualenv oluşturmalısınız. Oluşturduktan sonra aşağıdaki komut ile localhost üzerinden backend ve web sunucusu çalışmaya başlayacaktır.
+
+    py manage.py runserver
+
+### **Mobil Uygulama**
+
+Mobil klasörü içerisinde yer alan **package.json** dosyasında yazan kütüphanelerin yer aldığı bir virtualenv oluşturmalısınız. Oluşturduktan sonra aşağıdaki komut ile localhost üzerinde mobil uygulama çalışmaya başlayacaktır.
+
+    npx expo start
