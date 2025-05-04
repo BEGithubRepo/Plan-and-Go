@@ -157,3 +157,57 @@ export const routeApi = {
     }
   },
 };
+
+export const notificationService = {
+  
+  getNotifications: async () => {
+    try {
+      const response = await apiClient.get('notifications/');
+      return response.data;
+    } catch (error) {
+      console.error('Bildirimler alınamadı:', error);
+      throw error;
+    }
+  },
+
+  markAsRead: async (notificationId: any) => {
+    try {
+      await apiClient.patch(`notifications/${notificationId}/mark-as-read/`);
+    } catch (error) {
+      console.error('Okundu işaretlenemedi:', error);
+      throw error;
+    }
+  },
+
+  createNotification: async (payload: any) => {
+    try {
+      const response = await apiClient.post('notifications/', payload);
+      return response.data;
+    } catch (error) {
+      console.error('Bildirim oluşturulamadı:', error);
+      throw error;
+    }
+  }
+
+};
+
+
+
+export const FeedbackService = {
+  submitFeedback: async (message: any, routeId: any, travelBuddyId: any) => {
+    try {
+      const payload = {
+        message,
+        route: routeId,
+        travel_buddy: travelBuddyId
+      };
+      
+      const response = await apiClient.post('feedback/', payload);
+      return response.data;
+    } catch (error) {
+      console.error('Geri bildirim gönderilemedi:', error);
+      throw error;
+    }
+  }
+  
+};
