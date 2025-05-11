@@ -138,6 +138,33 @@ export const badgeApi = {
   },
 };
 
+export const badgeTradeApi = {
+  getTrades: async () => {
+    try {
+      const response = await apiClient.get('/api/trades/');
+      return response.data
+    } catch (error) {
+      throw error;
+    }
+  },
+  createTrade: async (tradeData: any) => {
+    try {
+      const response = await apiClient.post('/api/trades/', tradeData);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+  updateTradeStatus: async (tradeId: any) => {
+    try {
+      const response = await apiClient.patch(`/api/trades/${tradeId}`)
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+};
+
 export const routeApi = {
   getRoutes: async () => {
     try {
