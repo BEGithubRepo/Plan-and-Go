@@ -2,6 +2,14 @@ from django.db import models
 from users.models import User
 from routes.models import Route
 
+class Comment(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    route = models.ForeignKey(Route, on_delete=models.CASCADE)
+    travel_buddy = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True related_name='buddy_comments')
+    created_at = models.DateTimeField()
+
 class Notification(models.Model):
     CATEGORY_CHOICES = [
         ('route_update', 'Rota Güncellemesi'),

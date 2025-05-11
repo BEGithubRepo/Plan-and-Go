@@ -1,8 +1,11 @@
 # notifications/views.py
 
 from rest_framework import generics, permissions
-from .models import Notification
-from .serializers import NotificationSerializer, FeedbackSerializer
+from .models import Notification, Comment
+from .serializers import (
+    NotificationSerializer, 
+    FeedbackSerializer,
+    CommentSerializer)
 
 class NotificationList(generics.ListAPIView):
     serializer_class = NotificationSerializer
@@ -16,6 +19,13 @@ class MarkAsReadView(generics.UpdateAPIView):
     def perform_update(self, serializer):
         serializer.instance.is_read = True
         serializer.save()
+
+class CommentCreate(generics.CreateAPIView):
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class FeedbackCreate(generics.CreateAPIView):

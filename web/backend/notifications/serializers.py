@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Notification, Feedback
+from .models import Notification, Feedback, Comment
 from users.models import User
 from routes.models import Route
 
@@ -24,7 +24,6 @@ class NotificationSerializer(serializers.ModelSerializer):
             'message': {'required': True},
             'category': {'required': True}
         }
-
 
 class FeedbackSerializer(serializers.ModelSerializer):
     user = serializers.PrimaryKeyRelatedField(
@@ -57,4 +56,43 @@ class FeedbackSerializer(serializers.ModelSerializer):
         read_only_fields = ['created_at', 'user']
         extra_kwargs = {
             'message': {'required': True, 'max_length': 500}
+        }
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(
+        read_only=True,
+        default=serializers.CurrentUserDefault()
+    )
+
+    route = serializers.PrimaryKeyRelatedField(
+        queryset=Route.objects.all(),
+        required=False,
+        allow_null=True
+    )
+
+    travel_buddy = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        required=False,
+        allow_null=True
+    )
+
+    class Meta:
+        model = Comment
+        fields = [
+            'id',
+            'user',
+            'message',
+            'route',
+            'travel_buddy',
+            'created_at'
+        ]
+        read_only_fields = [
+            'created_at',
+            'user'
+        ]
+        extra_kwargs = {
+            'message' : {
+                'required' : True,
+                'max_length': 500
+            }
         }
