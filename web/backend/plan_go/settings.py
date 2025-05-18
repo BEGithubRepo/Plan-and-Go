@@ -164,6 +164,10 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+OLLAMA_API_URL = str(os.getenv('OLLAMA_API_URL', 'http://localhost:11434/api/generate'))
+OLLAMA_MODEL = str(os.getenv('OLLAMA_MODEL', 'md_tr_tunned'))
+OLLAMA_TIMEOUT = int(os.getenv('OLLAMA_TIMEOUT', 60))
+
 # social auth configs for github
 SOCIAL_AUTH_GITHUB_KEY = str(os.getenv('GITHUB_KEY'))
 SOCIAL_AUTH_GITHUB_SECRET = str(os.getenv('GITHUB_SECRET'))
@@ -179,6 +183,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = str(os.getenv('EMAIL_USER'))
 EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASSWORD'))
+
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 

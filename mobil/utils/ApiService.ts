@@ -238,3 +238,14 @@ export const FeedbackService = {
   }
   
 };
+
+export const LlmService = {
+  askLlm: async (payload: any) => {
+    try{
+      const response = await apiClient.post('ask/', payload);
+      return response.data;
+    } catch(error) {
+      throw error;
+    }
+  }
+};
